@@ -13,11 +13,11 @@ from googletrans import Translator
 
 ##Scrapear
 enlace = input(f'Ingrese el link de la pagina\n ')
-minLetters = 250
+minLetters = 70
 html =urllib.request.urlopen(enlace).read().decode('utf-8')
 text = get_text(html)
 article_text =  text
-article_text = article_text.replace("[ edit]","")
+article_text = article_text.replace("[edit]","")
 
 
 from nltk import word_tokenize,sent_tokenize
@@ -64,11 +64,13 @@ opc= input('¿Desea traducir el resumen? y/n \n')
 import heapq  
 summary_sentences = heapq.nlargest(7, sentence_scores, key=sentence_scores.get)
 summary = ' '.join(summary_sentences)  
-if(opc=='n'):
-   print(summary)
+from textblob import TextBlob
+if (opc =='n'):
+    print(summary)
 else:
-   
-    translator = Translator()
-    translate = translator.translate(summary, src="en", dest="es")
-    print("***************************TRADUCCIÓN*******************************")
-    print(translate.text)
+    traduc=TextBlob(summary)
+    summary_tr = traduc.translate(from_lang="en" , to ="es")
+    print("***********************************TRADUCCIÓN A ESPAÑOL**************************************")
+    print(summary_tr)
+    print("**************************************IDIOMA ORIGINAL***********************************")
+    print(summary)
