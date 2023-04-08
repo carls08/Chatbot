@@ -41,7 +41,7 @@ pares = [
 ],
 ]
 def chatear():
-    print("Hola soy un bot, escibre algo samir cv") #mensaje por defecto
+    print("Hola samir acaba ropa") #mensaje por defecto
     chat = Chat(pares, mis_reflexions)
     chat.converse()
 if __name__ == "__main__":

@@ -1,8 +1,10 @@
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
-import nltk
-x= "It was horrible experience"
-
+from textblob import TextBlob
+x= " "
+t = TextBlob(x) 
 sid = SentimentIntensityAnalyzer()
-resultados = sid.polarity_scores(x)
+resultados = sid.polarity_scores(str (t.translate(from_lang= "es",to="en")))
 
 print(resultados)
+
+
